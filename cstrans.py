@@ -56,7 +56,7 @@ class Transcription(str):
         between what should be considered as separate tokens), fold case etc.
 
         """
-        string = re.sub(r"(\w)(\W)", r"\1 \2", string.casefold())
+        string = re.sub(r"(\w)(\W)", r"\1 \2", string.lower())
         string = re.sub(r"(\W)(\w)", r"\1 \2", string)
         string = re.sub(r"\s+", " ", string)
         return string.strip()
