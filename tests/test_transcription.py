@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import unittest as ut
-import cstrans as t
+import phynetics.cstrans as t
 
 class TestPhoneticTranscription(ut.TestCase):
 
