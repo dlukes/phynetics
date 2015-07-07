@@ -353,17 +353,6 @@ def process_command_line(argv):
     parser = argparse.ArgumentParser(description="""Transcribe Czech sentence
     phonetically.""")
 
-    # define options here:
-    # parser.add_argument("-o", "--output", help="specify file to write output to")
-    # parser.add_argument("-m", "--max-tokens-per-seg", type=int, default=25,
-    #                     help="""specify maximum allowed number of tokens per
-    #                     segment""")
-    # parser.add_argument("-f", "--format", help="""specify type of output;
-    #                     defaults to eaf""", choices=["eaf", "numbered-log",
-    #                                                  "timestamped-log"])
-    # parser.add_argument("input_file", nargs="+")
-    # parser.add_argument("-q", "--quiet", action="store_true", help="""suppress
-    #                     logging messages""")
     parser.add_argument("sentence")
 
     settings = parser.parse_args(argv)
