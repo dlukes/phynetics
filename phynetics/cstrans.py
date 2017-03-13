@@ -24,7 +24,7 @@ class Transcription(str):
 
     _trigger_devoicing = "ptťksšcčxxf"
     _devoiced = _trigger_devoicing
-    _trigger_voicing = "bdďgzžʒɮhɣ" # ɮ stands for ʒ̆/ʒʒ
+    _trigger_voicing = "bdďgzžʒɮhɣ"  # ɮ stands for ʒ̆/ʒʒ
     _voiced = _trigger_voicing + "v"
     _devoiced2voiced = str.maketrans(_devoiced, _voiced)
     _voiced2devoiced = str.maketrans(_voiced, _devoiced)
@@ -93,7 +93,7 @@ class Transcription(str):
         string = re.sub(r"qu?", "kv", string)
         string = re.sub("ch", "x", string)
         string = re.sub("dz", "ʒ", string)
-        return re.sub("dž", "ɮ", string) # ɮ stands for ʒ̆
+        return re.sub("dž", "ɮ", string)  # ɮ stands for ʒ̆
 
     def _foreign(self, string):
         """Replace or otherwise treat non-Czech graphemes.
@@ -113,6 +113,7 @@ class Transcription(str):
 
         """
         result = ""
+        previous_phone = None
         # must be done character by character, because the voicing assimilation
         # can propagate from the back.
         for char in reversed(string):
@@ -340,6 +341,7 @@ class Transcription(str):
 # s/\([A-Z]\)/\1 /g
 # s/$/ sp/g
 
+
 def process_command_line(argv):
     """Return settings based on argv.
 
@@ -361,11 +363,13 @@ def process_command_line(argv):
 
     return settings
 
+
 def main(argv=None):
     settings = process_command_line(argv)
     trans = Transcription(settings.sentence)
     print(trans.fon)
     return 0
+
 
 if __name__ == "__main__":
     status = main()
